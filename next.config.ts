@@ -1,4 +1,4 @@
-import {defineConfig} from 'next';
+import defineConfig from 'next';
 
 const nextConfig = defineConfig({
   /* config options here */
