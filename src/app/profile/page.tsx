@@ -1,3 +1,5 @@
+"use client";
+
 import AuthGuard from '@/components/auth-guard';
 import AppLayout from '@/components/app-layout';
 import { useWallet } from '@/context/WalletProvider';
@@ -18,8 +20,8 @@ const ProfilePage = () => {
           <Image
             src="https://placehold.co/1200x400.png"
             alt="Profile banner"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
             data-ai-hint="abstract background"
           />
         </div>
