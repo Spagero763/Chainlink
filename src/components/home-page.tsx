@@ -2,9 +2,10 @@
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Heart, Repeat, Share } from 'lucide-react';
+import { MessageCircle, Heart, Repeat, Share, Image as ImageIcon, Video } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { useWallet } from '@/context/WalletProvider';
+import Image from 'next/image';
 
 const posts = [
     {
@@ -18,6 +19,7 @@ const posts = [
         comments: 21,
         reposts: 99,
         time: '15y',
+        media: null,
     },
     {
         id: 2,
@@ -30,6 +32,11 @@ const posts = [
         comments: 777,
         reposts: 500,
         time: '10y',
+        media: {
+            type: 'image',
+            url: 'https://placehold.co/600x400.png',
+            hint: 'abstract ethereum'
+        }
     },
     {
         id: 3,
@@ -42,6 +49,7 @@ const posts = [
         comments: 150,
         reposts: 300,
         time: '2d',
+        media: null,
     }
 ];
 
@@ -61,6 +69,20 @@ const PostCard = ({ post }: { post: typeof posts[0] }) => (
                 <p className="mt-1 text-sm whitespace-pre-wrap">{post.content}</p>
             </div>
         </CardHeader>
+        {post.media && (
+             <CardContent className="px-4 pt-0 pb-2">
+                 {post.media.type === 'image' && (
+                     <div className="relative aspect-video rounded-lg overflow-hidden border">
+                         <Image src={post.media.url} alt="Post image" fill className="object-cover" data-ai-hint={post.media.hint} />
+                     </div>
+                 )}
+                 {post.media.type === 'video' && (
+                     <div className="aspect-video rounded-lg overflow-hidden border">
+                        <video src={post.media.url} className="w-full h-full object-cover" controls />
+                     </div>
+                 )}
+            </CardContent>
+        )}
         <CardFooter className="flex justify-around p-1 border-t bg-muted/50">
             <Button variant="ghost" size="sm" className="flex items-center gap-2 text-muted-foreground hover:text-primary">
                 <MessageCircle size={16} /> {post.comments}
@@ -92,7 +114,15 @@ export default function HomePage() {
                         </Avatar>
                         <div className="w-full">
                             <Textarea placeholder="What's on your mind, dev?" className="mb-2 bg-secondary border-none focus-visible:ring-primary" />
-                            <div className="flex justify-end">
+                            <div className="flex justify-between items-center">
+                                <div className="flex gap-2 text-primary">
+                                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                                        <ImageIcon />
+                                    </Button>
+                                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                                        <Video />
+                                    </Button>
+                                </div>
                                 <Button>Post</Button>
                             </div>
                         </div>
