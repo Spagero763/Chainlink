@@ -1,3 +1,5 @@
+"use client";
+
 import AuthGuard from '@/components/auth-guard';
 import AppLayout from '@/components/app-layout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -71,7 +73,7 @@ const BountyPage = () => (
                 <CardHeader>
                     <div className="flex justify-between items-start">
                         <CardTitle className="text-lg">{bounty.title}</CardTitle>
-                        <Badge variant="default" className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30">{bounty.reward}</Badge>
+                        <Badge variant="default">{bounty.reward}</Badge>
                     </div>
                     <CardDescription>by {bounty.author}</CardDescription>
                 </CardHeader>

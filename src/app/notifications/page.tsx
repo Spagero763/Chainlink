@@ -1,3 +1,5 @@
+"use client";
+
 import AuthGuard from '@/components/auth-guard';
 import AppLayout from '@/components/app-layout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -35,7 +37,7 @@ const notifications = [
 
 const NotificationIcon = ({ type }: { type: string }) => {
     switch(type) {
-        case 'follow': return <UserPlus className="h-5 w-5 text-blue-500" />;
+        case 'follow': return <UserPlus className="h-5 w-5 text-primary" />;
         case 'reply': return <MessageSquare className="h-5 w-5 text-green-500" />;
         case 'like': return <Heart className="h-5 w-5 text-red-500" />;
         default: return <Bell className="h-5 w-5 text-gray-500" />;

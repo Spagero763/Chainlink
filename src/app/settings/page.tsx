@@ -1,3 +1,5 @@
+"use client";
+
 import AuthGuard from '@/components/auth-guard';
 import AppLayout from '@/components/app-layout';
 import { Button } from "@/components/ui/button"
