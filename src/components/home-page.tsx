@@ -42,7 +42,7 @@ const posts = [
         id: 3,
         author: 'DevDAO',
         handle: '@devdao',
-        avatar: 'https://placehold.co/40x40.png',
+        avatar: '/devdao-logo.svg',
         avatarHint: 'organization logo',
         content: 'Hackathon Alert! We are hosting a 3-day virtual hackathon focused on DeFi innovations on Base. Prize pool of $50k. Are you in? #hackathon #defi #base',
         likes: 1200,
